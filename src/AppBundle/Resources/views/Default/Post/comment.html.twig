@@ -1,0 +1,73 @@
+{# This template is used to print a post's comment tree recursively #}
+
+{% if comments[parentId] is defined %}
+
+	{% for aComment in comments[parentId] %}
+        
+        {# The user vote for this comment #}
+        {% set userVote = aComment.votes|length == 0 ? 0 : aComment.votes[0].vote %}
+        
+		<div data-hashid="{{ aComment.hashId }}"  data-uservote="{{ userVote }}" class="comment" style="padding-left: {{ depth }}px">
+			{# Here I should put the user picture #}
+			<div class="userPicture">
+				<img alt="" title="" src="{{ url('freepost_user_picture', {'userHashId': aComment.user.hashId}) }}" />
+			</div>
+
+			{# Text of the comment #}
+			<div class="content">
+				<div class="userName {{ aComment.user.hashId == op.hashId ? 'op' }}">
+					{{ aComment.user.username }}
+				</div>
+
+                <div class="text">
+                    {{ aComment.text|raw }}
+                </div>
+                
+                {# Here a textarea will be created after clicking "Reply" #}
+                <div class="editTextarea"></div>
+                
+                {# Here a textarea will be created after clicking "Reply" #}
+                <div class="replyTextarea"></div>
+                
+                <div class="menu">
+                    {% image '@AppBundle/Resources/public/images/upvote-slim.png' %}
+                        <img class="upvote {{ userVote == 1 ? 'selected' }}" src="{{ asset_url }}" alt="" title="Upvote" />
+                    {% endimage %}
+                    {% image '@AppBundle/Resources/public/images/downvote-slim.png' %}
+                        <img class="downvote {{ userVote == -1 ? 'selected' }}" src="{{ asset_url }}" alt="" title="Downvote" />
+                    {% endimage %}
+					
+					<span class="points">
+						{{ aComment.vote }}
+					</span>
+
+					<ul>
+                        {% if app.user and aComment.user.id == app.user.id %}
+                            <li class="edit">Edit</li>
+                            <li class="editSave hidden">Save</li>
+                            <li class="editCancel hidden">Cancel</li>
+                        {% endif %}
+                        <li class="link">
+                            <a class="none" target="_self" href="{{ path('freepost_post_comment', {'communityName': post.community.name, 'postHashId': post.hashId, 'postTitle': post.title, 'commentHashId': aComment.hashId}) }}">
+                                Link
+                            </a>
+                        </li>
+						<li class="reply">Reply</li>
+						<li class="submit hidden">Submit</li>
+                        <li class="loading hidden">
+                            {% image '@AppBundle/Resources/public/images/loading-bar.gif' %}
+                                <img src="{{ asset_url }}" alt="" />
+                            {% endimage %}
+                        </li>
+						<li class="cancel hidden">Cancel</li>
+					</ul>
+				</div>
+                
+                
+			</div>
+		</div>
+        
+        {% include 'AppBundle:Default:Post/comment.html.twig' with {'parentId': aComment.id, 'depth': depth+32} %}
+	{% endfor %}
+
+{% endif %}

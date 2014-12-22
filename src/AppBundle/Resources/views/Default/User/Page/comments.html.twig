@@ -1,0 +1,56 @@
+{# This template is never rendered directly, but it's extended by
+   
+   'AppBundle:Default:User/Page/mycomments.html.twig'
+   'AppBundle:Default:User/Page/replies.html.twig'
+#}
+
+{% extends 'AppBundle:Default:User/template.html.twig' %}
+
+{% block title %}
+    Comments: {{ user.username }}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    
+    {% javascripts
+        '@AppBundle/Resources/public/js/User/comments.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block content %}
+    
+    <div class="comments">
+        
+        <div class="menu">
+            <a class="none {{ page == 'REPLIES' ? 'selected' }}" target="_self" href="{{ path('freepost_user_replies', {'userName': user.username}) }}">
+                Replies
+            </a>
+            <a class="none {{ page == 'MYCOMMENTS' ? 'selected' }}" target="_self" href="{{ path('freepost_user_mycomments', {'userName': user.username}) }}">
+                My comments
+            </a>
+        </div>
+        
+        <div class="list">
+            {% block list %}{% endblock %}
+        </div>
+        
+    </div>
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

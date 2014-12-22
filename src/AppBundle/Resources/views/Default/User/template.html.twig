@@ -1,0 +1,48 @@
+{% extends 'AppBundle:Default:index.html.twig' %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    
+    {% stylesheets
+        '@AppBundle/Resources/public/css/user.css'
+        '@AppBundle/Resources/public/css/userMenu.css'
+        '@AppBundle/Resources/public/css/userToolbar.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+        
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    
+    {% javascripts
+        '@AppBundle/Resources/public/js/User/user.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <div class="user">
+        
+        {# Right column #}
+        
+        <div class="sidebar">
+            {# Community menu #}
+            {% include 'AppBundle:Default:User/menu.html.twig' %}
+        </div>
+        
+        {# Page content #}
+        
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        
+    </div>
+
+{% endblock %}
+
+
+
+

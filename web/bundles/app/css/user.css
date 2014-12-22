@@ -1,0 +1,215 @@
+div.user {
+    background-color: #f5f8fa;
+    min-height: 100%;
+    overflow: hidden;
+    padding: 1em 5% 2em 5%;
+}
+    
+    div.user > .sidebar {
+        float: right;
+        height: 100%;
+        width: 30%;
+    }
+    
+    div.user > .content {
+        height: 100%;
+        margin: 0 35% 0 0;
+    }
+    
+        /*** Page: communities ***/
+        
+        div.user > .content > .communities {
+            overflow: hidden;
+        }
+            
+            /* List of communities */
+            div.user > .content > .communities > .communities {
+                float: left;
+                width: 25%;
+            }
+                
+                div.user > .content > .communities > .communities > .search {
+                    margin: 0 0 1em 0;
+                }
+                    
+                    div.user > .content > .communities > .communities > .search > .results {
+                        margin: 1em 0 0 0;
+                    }
+                
+                    div.user > .content > .communities > .communities > .search > input[name=filter] {
+                        background: #fff url("../../bundles/app/images/magnifier.png") no-repeat center left;
+                        padding: .5em 1em .5em 35px;
+                    }
+                
+                div.user > .content > .communities > .communities .community {
+                    color: #888;
+                    cursor: pointer;
+                    padding: .5em;
+                    transition: all .5s;
+                }
+                
+                div.user > .content > .communities > .communities .selected,
+                div.user > .content > .communities > .communities .community:hover {
+                    color: #000;
+                    background-color: #fff;
+                    border-right: 2px solid #e1e8ed;
+                }
+                
+                    div.user > .content > .communities > .communities .community > img {
+                        border-radius: 4px;
+                        height: 1.5em;
+                        margin: 0 .5em 0 0;
+                        vertical-align: middle;
+                    }
+            
+            /* List posts for a community */
+            div.user > .content > .communities > .list {
+                margin: 0 0 0 30%;
+            }
+            
+                div.user > .content > .communities > .list > .header {
+                    overflow: hidden;
+                    margin: 0 0 1em 0;
+                }
+                    
+                    div.user > .content > .communities > .list > .header > .communityName {
+                        font-weight: bold;
+                        line-height: 1em;
+                    }
+                    
+                    div.user > .content > .communities > .list > .header > img {
+                        border-radius: 4px;
+                        float: left;
+                        height: 3em;
+                        margin: 0 1em 0 0;
+                        vertical-align: top;
+                        width: 3em;
+                    }
+                    
+                    div.user > .content > .communities > .list > .header > .menu {
+                        display: inline-block;
+                        overflow: hidden;
+                    }
+                    
+                        div.user > .content > .communities > .list > .header > .menu > li {
+                            float: left;
+                            line-height: 2em;
+                            margin: 0 1em 0 0;
+                        }
+        
+        /* Page: comments */
+        
+        div.user > .content > .comments {
+            overflow: hidden;
+        }
+        
+            div.user > .content > .comments > .menu {
+                float: left;
+                width: 25%;
+            }
+            
+                div.user > .content > .comments > .menu > a {
+                        color: #888;
+                        cursor: pointer;
+                        padding: .5em;
+                        transition: all .5s;
+                        width: 100%;
+                    }
+                    
+                div.user > .content > .comments > .menu > a.selected,
+                div.user > .content > .comments > .menu > a:hover {
+                    color: #000;
+                    background-color: #fff;
+                    border-right: 2px solid #e1e8ed;
+                }
+            
+            div.user > .content > .comments > .list {
+                margin: 0 0 0 30%;
+            }
+            
+                div.user > .content > .comments > .list > .comment {
+                    background-color: #fff;
+                    border: 1px solid transparent;
+                    border: 1px solid #e1e8ed;
+                    margin: 0 0 .3em 0;
+                    position: relative;
+                    transition: all .5s;
+                }
+                
+                div.user > .content > .comments > .list > .comment:hover {
+                    border: 1px solid rgba(0, 132, 180, .5);
+                    
+                    -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 132, 180, .5);
+                    -moz-box-shadow:    0px 0px 3px 0px rgba(0, 132, 180, .5);
+                    box-shadow:         0px 0px 3px 0px rgba(0, 132, 180, .5);
+                }
+                
+                    div.user > .content > .comments > .list > .comment > .text {
+                        padding: 1em;
+                    }
+                    
+                    div.user > .content > .comments > .list > .comment > .commentInfo {
+                        background-color: #f5f8fa;
+                        border-top: 1px solid #e1e8ed;
+                        overflow: hidden;
+                        opacity: .6;
+                        padding: 1em;
+                        transition: all .5s;
+                    }
+                    
+                    div.user > .content > .comments > .list > .comment:hover > .commentInfo {
+                        opacity: 1;
+                    }
+                    
+                        div.user > .content > .comments > .list > .comment > .commentInfo  > .username,
+                        div.user > .content > .comments > .list > .comment > .commentInfo  > .community {
+                            float: right;
+                            font-size: .7em;
+                            line-height: 1.5em;
+                            text-align: right;
+                            width: 50%;
+                        }
+                        
+                            div.user > .content > .comments > .list > .comment > .commentInfo  > .username > img,
+                            div.user > .content > .comments > .list > .comment > .commentInfo  > .community > img {
+                                border-radius: 4px;
+                                float: right;
+                                height: 3em;
+                                margin: 0 0 0 1em;
+                                width: 3em;
+                            }
+
+                        div.user > .content > .comments > .list > .comment > .commentInfo  > .post {
+                            font-style: italic;
+                        }
+                        
+        /*** Page: preferences ***/
+        div.user > .content > .preferences {
+            background-color: #fff;
+            border: 1px solid #e1e8ed;
+            cursor: default;
+        }    
+            
+            div.user > .content > .preferences > .section {
+                overflow: hidden;
+            }
+            
+                div.user > .content > .preferences > .section > .title {
+                    float: left;
+                    font-weight: bold;
+                    width: 25%;
+                    padding: 1em;
+                    text-align: right;
+                }
+                
+                div.user > .content > .preferences > .section > .options {
+                    margin: 0 0 0 25%;
+                    padding: 1em;
+                    text-align: left;
+                }
+            
+            div.user > .content > .preferences > .section #pictureFileLoading {
+                display: none;
+            }
+            
+            

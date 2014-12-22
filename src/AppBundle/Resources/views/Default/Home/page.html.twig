@@ -1,0 +1,55 @@
+{% extends 'AppBundle:Default:index.html.twig' %}
+
+{% block title %}freepost{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    
+    {% stylesheets
+        '@AppBundle/Resources/public/css/home.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+        
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    
+    {% javascripts
+        '@AppBundle/Resources/public/js/home.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block body %}
+    <div class="home">
+        
+        <div class="header">
+            {% if not app.user %}
+                <a class="none signin" target="_self" href="{{ url('freepost_user_signin') }}">
+                    Sign in
+                </a>
+            {% endif %}
+            
+            <a class="none" target="_self" href="{{ url('freepost_homepage') }}">
+                {% image '@AppBundle/Resources/public/images/logo.png' %}
+                    <img src="{{ asset_url }}" alt="" />
+                {% endimage %}
+                
+                <div class="title">
+                    freepost
+                </div>
+            </a>
+        </div>
+        
+        {% block content %}{% endblock %}
+        
+    </div>
+
+{% endblock %}
+
+
+
+

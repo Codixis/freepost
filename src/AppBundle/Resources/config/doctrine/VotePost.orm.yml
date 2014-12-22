@@ -1,0 +1,33 @@
+AppBundle\Entity\VotePost:
+    type: entity
+    table: `vote_post`
+    repositoryClass: AppBundle\Entity\VotePostRepository
+    id:
+        user:
+          associationKey: true
+        post:
+          associationKey: true
+
+    fields:
+        vote:
+            column: `vote`
+            type: smallint
+        datetime:
+            column: `datetime`
+            type: datetime
+
+    manyToOne:
+        post:
+            targetEntity: Post
+            inversedBy: votes
+            joinColumn:
+                name: postId
+                referencedColumnName: id
+        user:
+            targetEntity: User
+            inversedBy: postVotes
+            joinColumn:
+                name: userId
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

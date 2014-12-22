@@ -1,0 +1,35 @@
+<div class="box userMenu">
+    
+    <div class="picture">
+        
+        <img class="image" alt="" title="" src="{{ url('freepost_user_picture', {'userHashId': user.hashId}) }}" />
+        
+        <div class="content">
+            <div class="username">
+                {{ user.username }}
+            </div>
+            <a class="none newReplies" target="_self" href="{{ path('freepost_user_replies', {'userName': user.username}) }}">
+                You have $1 new replies
+            </a>
+        </div>
+    </div>
+    
+    <div class="menu">
+        <a class="none" target="_self" href="{{ path('freepost_user', {'userName': user.username}) }}">
+            Communities
+        </a>
+        <a class="none" target="_self" href="{{ path('freepost_user_myposts', {'userName': user.username}) }}">
+            My posts
+        </a>
+        <a class="none" target="_self" href="{{ path('freepost_user_replies', {'userName': user.username}) }}">
+            Comments
+        </a>
+        <a class="none" target="_self" href="{{ path('freepost_user_preferences', {'userName': user.username}) }}">
+            Preferences
+        </a>
+        <a class="none" target="_self" href="{{ path('freepost_user_signout') }}">
+            Sign out
+        </a>
+    </div>
+    
+</div>

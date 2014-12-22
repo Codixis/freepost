@@ -1,0 +1,83 @@
+AppBundle\Entity\User:
+    type: entity
+    table: `user`
+    repositoryClass: AppBundle\Entity\UserRepository
+    
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    
+    fields:
+        hashId:
+            type: string
+            length: '32'
+        email:
+            column: `email`
+            length: '255'
+            nullable: true
+            type: string
+        username:
+            column: `username`
+            type: string
+            length: 255
+        password:
+            column: `password`
+            type: string
+            length: 255
+        salt:
+            column: `salt`
+            type: string
+            length: '64'
+        registered:
+            column: `registered`
+            type: datetime
+        resetPasswordSecretToken:
+            type: string
+            length: '32'
+        isActive:
+            type: boolean
+    
+    uniqueConstraints:
+        hashId:
+            columns: hashId
+        email:
+            columns: email
+        username:
+            columns: username
+    
+    oneToMany:
+        comments:
+            targetEntity: Comment
+            mappedBy: user
+        posts:
+            targetEntity: Post
+            mappedBy: user
+        commentVotes:
+            targetEntity: VoteComment
+            mappedBy: user
+        postVotes:
+            targetEntity: VotePost
+            mappedBy: user
+
+    manyToMany:
+        communities:
+            targetEntity: Community
+            inversedBy: users
+            joinTable:
+                name: users_communities
+                joinColumns:
+                    userId:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    communityId:
+                        referencedColumnName: id
+            
+    lifecycleCallbacks: {  }
+
+    
+    
+    
+    

@@ -1,0 +1,17 @@
+freepost_comment_submit_new:
+    path:     /newPostComment/{postHashId}
+    defaults: { _controller: AppBundle:Comment:submitNew }
+    methods: [POST]
+
+freepost_comment_edit:
+    path:     /editComment/{commentHashId}
+    defaults: { _controller: AppBundle:Comment:edit }
+    methods: [POST]
+
+freepost_comment_upvote:
+    path:     /upvoteComment/{commentHashId}
+    defaults: { _controller: AppBundle:Comment:upvote }
+
+freepost_comment_downvote:
+    path:     /downvoteComment/{commentHashId}
+    defaults: { _controller: AppBundle:Comment:downvote }

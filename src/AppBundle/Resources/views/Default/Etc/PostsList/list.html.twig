@@ -1,0 +1,13 @@
+{# List posts here #}
+
+<div id="postsList" class="postsList">
+    
+    {% if posts|length > 0 %}
+        {% for aPost in posts %}
+            {% include 'AppBundle:Default:Etc/PostsList/post.html.twig' %}
+        {% endfor %}
+    {% else %}
+        No posts found in this community!
+    {% endif %}
+    
+</div>

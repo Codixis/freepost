@@ -1,0 +1,32 @@
+{# A single post in MyPostsList/list.html.twig #}
+
+<div class="post">
+    
+    {# Post title #}
+    <div class="title">
+        {{ aPost.title|raw }}
+    </div>
+    
+    {# Post text #}
+    <div class="text">
+        {{ aPost.text|raw }}
+    </div>
+    
+    {# Info about this post #}
+    <div class="postInfo">
+        <div class="community">
+            <img class="picture" alt="" title="" src="{{ url('freepost_community_picture', {'communityHashId': aPost.community.hashId}) }}" />
+            <a class="none" target="_self" href="{{ path('freepost_community', {'communityName': aPost.community.name}) }}">
+                {{ aPost.community.name }}
+            </a>
+            <br />
+            {# http://php.net/manual/en/function.date.php #}
+            {{ aPost.created|date("H:i M, jS") }}
+        </div>
+        
+        <a class="none comments" target="_blank" href="{{ path('freepost_post', {'communityName': aPost.community.name, 'postHashId': aPost.hashId, 'postTitle': aPost.title}) }}">
+            {{ aPost.commentsCount > 0 ? aPost.commentsCount }}
+            COMMENTS
+        </a>
+    </div>
+</div>

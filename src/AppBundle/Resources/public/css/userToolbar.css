@@ -1,0 +1,25 @@
+.userToolbar {
+    color: #000;
+    cursor: pointer;
+    font-size: .8em;
+    font-weight: bold;
+    letter-spacing: .1em;
+    margin: 0 0 1em 0;
+    transition: all .5s;
+    padding: 0;
+    position: relative;
+}
+    
+.userToolbar:hover {
+}
+    
+    .userToolbar .userPicture {
+        height: 2em;
+        margin: 0 1em 0 0;
+        vertical-align: middle;
+    }
+    
+    .userToolbar > a {
+        display: block;
+        padding: .25em;
+    }

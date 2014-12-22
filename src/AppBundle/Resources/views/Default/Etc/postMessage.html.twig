@@ -1,0 +1,17 @@
+{# This template is used when posting a message back from a hidden iframe.
+   See https://developer.mozilla.org/en-US/docs/Web/API/window.postMessage
+   
+   Note: this template accepts 1 input, "message", which MUST be a JSON object
+#}
+
+{% javascripts
+    '@AppBundle/Resources/public/js/jquery.js'
+%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+       parent.postMessage({{ message|raw }}, "*");
+    });
+</script>

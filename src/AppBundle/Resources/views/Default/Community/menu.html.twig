@@ -1,0 +1,32 @@
+<div class="box communityMenu">
+    
+    <div class="picture">
+        
+        <img class="image" alt="" title="" src="{{ url('freepost_community_picture', {'communityHashId': community.hashId}) }}" />
+
+        <div class="content">
+            {{ community.name }}
+        </div>
+        
+        {% if app.user %}
+            <div id="follow" class="follow" data-community-name="{{ community.name }}">
+                + Follow
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="menu">
+        <a class="none" target="_self" href="{{ path('freepost_community', {'communityName': community.name}) }}">
+            All posts
+        </a>
+        <a class="none" target="_self" href="{{ path('freepost_community_about', {'communityName': community.name}) }}">
+            About us
+        </a>
+        {% if app.user %}
+            <a class="none" target="_self" href="{{ path('freepost_community_preferences', {'communityName': community.name}) }}">
+                Preferences
+            </a>
+        {% endif %}
+    </div>
+    
+</div>

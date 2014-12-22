@@ -1,0 +1,60 @@
+{% extends 'AppBundle:Default:Home/page.html.twig' %}
+
+{% block content %}
+    <div class="signin">
+        <ul class="menu">
+            <li class="signin selected">Sign in</li>
+            <li class="signup">New user</li>
+        </ul>
+        <div class="form">
+            {# Signin form #}
+            <div class="signin selected">
+                <form action="{{ url('freepost_user_signin_check') }}" method="post" target="_self" enctype="application/x-www-form-urlencoded">
+                    <div class="title">Screen name</div>
+                    <div class="">
+                        <input type="text" name="username" value="" />
+                    </div>
+                    <div class="title">Password</div>
+                    <div class="">
+                        <input type="password" name="password" value="" />
+                    </div>
+                    <div class="buttons">
+                        <input type="submit" class="buttonAction" value="Sign in" />
+                    </div>
+                </form>
+            </div>
+            
+            {# Signup form #}
+            <div class="signup">
+                <form action="{{ url('freepost_user_process_signup') }}" method="post" target="_self" enctype="application/x-www-form-urlencoded">
+                    <div class="title">Choose a screen name</div>
+                    <div class="">
+                        <input type="text" name="username" value="" />
+                    </div>
+                    <div class="tip">
+                        Five characters or more
+                    </div>
+                    <div class="validUsername">
+                        This username is available!
+                    </div>
+                    <div class="badUsername">
+                        This username is already taken!
+                    </div>
+                    
+                    <div class="title">Choose a password</div>
+                    <div class="">
+                        <input type="password" name="password" value="" />
+                    </div>
+                    <div class="tip">
+                        Five characters or more
+                    </div>
+                    <div class="buttons">
+                        <input type="submit" class="buttonAction" value="Create new user" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

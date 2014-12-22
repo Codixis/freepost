@@ -1,0 +1,49 @@
+freepost_community:
+    path:     /community/{communityName}
+    defaults: { _controller: AppBundle:Community:hotPosts }
+
+# Sort posts by "New" (instead of "Hot")
+freepost_community_new:
+    path:     /community/{communityName}/new
+    defaults: { _controller: AppBundle:Community:newPosts }
+
+freepost_community_picture:
+    path: /asset/community/{communityHashId}/picture
+    defaults: { _controller: AppBundle:Asset:communityPicture }
+
+freepost_submit_new_post:
+    path:     /newPost/{communityHashId}
+    defaults: { _controller: AppBundle:Community:submitNewPost }
+    methods: [POST]
+
+freepost_community_about:
+    path:     /community/{communityName}/about
+    defaults: { _controller: AppBundle:Community:about }
+
+freepost_community_preferences:
+    path:     /community/{communityName}/preferences
+    defaults: { _controller: AppBundle:Community:preferences }
+
+freepost_community_update_name:
+    pattern:  /asset/community/{communityHashId}/updateDisplayName
+    defaults: { _controller: AppBundle:Community:updateDisplayName }
+    methods: [POST]
+
+freepost_community_update_description:
+    pattern:  /asset/community/{communityHashId}/updateDescription
+    defaults: { _controller: AppBundle:Community:updateDescription }
+    methods: [POST]
+
+freepost_community_update_picture:
+    pattern:  /asset/community/{communityHashId}/updatePicture
+    defaults: { _controller: AppBundle:Community:updatePicture }
+    methods: [POST]
+
+freepost_community_search:
+    path:     /communitySearch/{communityName}
+    defaults: { _controller: AppBundle:Community:search }
+    methods: [GET]
+    
+    
+    
+    

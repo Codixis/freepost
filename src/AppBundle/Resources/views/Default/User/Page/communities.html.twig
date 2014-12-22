@@ -1,0 +1,58 @@
+{% extends 'AppBundle:Default:User/template.html.twig' %}
+
+{% block title %}
+    User: {{ user.username }}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    
+    {% javascripts
+        '@AppBundle/Resources/public/js/User/communities.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block content %}
+    
+    <div class="communities">
+        
+        {# List of communities #}
+        <div id="communities" class="communities">
+            
+            <div class="search">
+                <input type="text" name="filter" value="" />
+                <div class="results"></div>
+            </div>
+            
+            {% for aCommunity in user.communities %}
+                <div class="subscribed">
+                    <div class="community" data-hashid="{{ aCommunity.hashId }}">
+                        <img alt="" title="" src="{{ url('freepost_community_picture', {'communityHashId': aCommunity.hashId}) }}" />
+                        {{ aCommunity.name }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        {# Load communities posts here #}
+        <div id="list" class="list"></div>
+        
+    </div>
+    
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

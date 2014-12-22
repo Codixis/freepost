@@ -1,0 +1,3 @@
+freepost_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:home }

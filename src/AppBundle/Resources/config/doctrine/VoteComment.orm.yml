@@ -1,0 +1,33 @@
+AppBundle\Entity\VoteComment:
+    type: entity
+    table: `vote_comment`
+    repositoryClass: AppBundle\Entity\VoteCommentRepository
+    id:
+        user:
+          associationKey: true
+        comment:
+          associationKey: true
+
+    fields:
+        vote:
+            column: `vote`
+            type: smallint
+        datetime:
+            column: `datetime`
+            type: datetime
+
+    manyToOne:
+        comment:
+            targetEntity: Comment
+            inversedBy: votes
+            joinColumn:
+                name: commentId
+                referencedColumnName: id
+        user:
+            targetEntity: User
+            inversedBy: commentVotes
+            joinColumn:
+                name: userId
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

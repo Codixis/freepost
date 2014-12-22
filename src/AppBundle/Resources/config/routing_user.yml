@@ -1,0 +1,83 @@
+freepost_user:
+    path:     /user/{userName}
+    defaults: { _controller: AppBundle:User:communities }
+
+freepost_user_myposts:
+    path:     /user/{userName}/myPosts
+    defaults: { _controller: AppBundle:User:myPosts }
+
+freepost_user_replies:
+    path:     /user/{userName}/Replies
+    defaults: { _controller: AppBundle:User:replies }
+
+freepost_user_unread_replies:
+    path:     /unreadReplies
+    defaults: { _controller: AppBundle:User:unreadReplies }
+
+freepost_user_mycomments:
+    path:     /user/{userName}/Comments
+    defaults: { _controller: AppBundle:User:comments }
+
+freepost_user_preferences:
+    path:     /user/{userName}/preferences
+    defaults: { _controller: AppBundle:User:preferences }
+
+freepost_user_check_username:
+    path:     /checkUsername/{userName}
+    defaults: { _controller: AppBundle:User:checkUsername }
+
+freepost_user_follow:
+    path:     /community/{communityName}/follow
+    defaults: { _controller: AppBundle:User:follow }
+    methods: [POST]
+
+freepost_user_follows_community:
+    path:     /userFollowsCommunity/{communityName}
+    defaults: { _controller: AppBundle:User:followsCommunity }
+
+freepost_user_picture:
+    path: /asset/user/{userHashId}/picture
+    defaults: { _controller: AppBundle:Asset:userPicture }
+
+freepost_user_read_community_posts:
+    path:     /userReadCommunityPosts/{communityHashId}
+    defaults: { _controller: AppBundle:User:readCommunityPosts }
+
+freepost_user_signin:
+    path:     /signin
+    defaults: { _controller: AppBundle:User:signin }
+
+freepost_user_signin_check:
+    path: /signin_check
+
+freepost_user_signup:
+    path:     /signup
+    defaults: { _controller: AppBundle:User:signin }
+    methods: [GET]
+
+freepost_user_process_signup:
+    path:     /signup
+    defaults: { _controller: AppBundle:User:signup }
+    methods: [POST]
+
+freepost_user_signout:
+    path: /signout
+
+freepost_user_update_name:
+    pattern:  /asset/user/updateDisplayName
+    defaults: { _controller: AppBundle:User:updateDisplayName }
+    methods: [POST]
+
+freepost_user_update_picture:
+    pattern:  /asset/user/updatePicture
+    defaults: { _controller: AppBundle:User:updatePicture }
+    methods: [POST]
+    
+    
+    
+    
+    
+    
+    
+    
+    

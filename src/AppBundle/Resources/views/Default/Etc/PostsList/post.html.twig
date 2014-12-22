@@ -1,0 +1,45 @@
+{# A single post in PostsList/list.html.twig #}
+
+{# The user vote for this post #}
+{% set userVote = aPost.votes|length == 0 ? 0 : aPost.votes[0].vote %}
+
+<div class="post" data-hashid="{{ aPost.hashId }}" data-uservote="{{ userVote }}">
+    
+    {# Post title #}
+    <div class="title">
+        {{ aPost.title|raw }}
+    </div>
+    
+    {# Post text #}
+    <div class="text">
+        {{ aPost.text|raw }}
+    </div>
+    
+    {# Info about this post #}
+    <div class="postInfo">
+        <div class="username">
+            <img class="picture" alt="" title="" src="{{ url('freepost_user_picture', {'userHashId': aPost.user.hashId}) }}" />
+            {{ aPost.user.username }}
+            <br />
+            {# http://php.net/manual/en/function.date.php #}
+            {{ aPost.created|date("H:i M, jS") }}
+        </div>
+        
+        <div class="vote">
+            <span class="points">{{ aPost.vote }}</span>
+            
+            {% image '@AppBundle/Resources/public/images/upvote-slim.png' %}
+                <img class="upvote {{ userVote == 1 ? 'selected' }}" src="{{ asset_url }}" alt="" title="Upvote" />
+            {% endimage %}
+            
+            {% image '@AppBundle/Resources/public/images/downvote-slim.png' %}
+                <img class="downvote {{ userVote == -1 ? 'selected' }}" src="{{ asset_url }}" alt="" title="Downvote" />
+            {% endimage %}
+        </div>
+        
+        <a class="none comments" target="_blank" href="{{ path('freepost_post', {'communityName': community.name, 'postHashId': aPost.hashId, 'postTitle': aPost.title}) }}">
+            {{ aPost.commentsCount > 0 ? aPost.commentsCount }}
+            COMMENTS
+        </a>
+    </div>
+</div>

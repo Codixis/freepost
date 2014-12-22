@@ -1,0 +1,7 @@
+freepost_posts_list_new:
+    path:     /postsList/{communityHashId}/new
+    defaults: { _controller: AppBundle:PostsList:new }
+
+freepost_posts_list_hot:
+    path:     /postsList/{communityHashId}/hot
+    defaults: { _controller: AppBundle:PostsList:hot }

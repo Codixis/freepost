@@ -1,0 +1,45 @@
+AppBundle\Entity\Community:
+    type: entity
+    table: `community`
+    repositoryClass: AppBundle\Entity\CommunityRepository
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+
+    fields:
+        hashId:
+            type: string
+            length: '32'
+        name:
+            column: `name`
+            type: string
+            length: 255
+        description:
+            column: `description`
+            type: text
+        created:
+            column: `created`
+            type: datetime
+
+    uniqueConstraints:
+        hashId:
+          columns: hashId
+
+        name:
+          columns: name
+
+    oneToMany:
+        posts:
+            targetEntity: Post
+            mappedBy: community
+
+    manyToMany:
+        users:
+            targetEntity: User
+            mappedBy: communities
+
+    lifecycleCallbacks: {  }

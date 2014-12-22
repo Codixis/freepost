@@ -1,0 +1,20 @@
+{% extends 'AppBundle:Default:Home/page.html.twig' %}
+
+{% block content %}
+    <div class="cards">
+        {% for aCommunity in communities %}
+            <a class="none" target="_self" href="{{ path('freepost_community', {'communityName': aCommunity.name}) }}">
+                <div class="box community">
+                    
+                    <img alt="" title="" class="picture" src="{{ url('freepost_community_picture', {'communityHashId': aCommunity.hashId}) }}" />
+                    
+                    <div class="name">
+                        {{ aCommunity.name }}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,13 @@
+{# List posts here #}
+
+<div id="myPostsList" class="myPostsList">
+    
+    {% if posts|length > 0 %}
+        {% for aPost in posts %}
+            {% include 'AppBundle:Default:Etc/MyPostsList/post.html.twig' %}
+        {% endfor %}
+    {% else %}
+        You haven't posted anything yet!
+    {% endif %}
+    
+</div>

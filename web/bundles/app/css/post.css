@@ -1,0 +1,232 @@
+div.post {
+    background-color: #f5f8fa;
+    min-height: 100%;
+    overflow: hidden;
+    padding: 1em 5% 2em 5%;
+}
+    
+    div.post > .sidebar {
+        float: right;
+        height: 100%;
+        width: 30%;
+    }
+    
+    div.post > .content {
+        height: 100%;
+        margin: 0 35% 0 0;
+    }
+    
+        div.post > .content > .title {
+            font-size: 1.5em;
+        }
+        
+        div.post > .content > .text {
+            background-color: #fff;
+            border: 1px solid #e1e8ed;
+            margin: 1em 0;
+            padding: 1em;
+        }
+        
+            div.post > .content > .text > .commentInfo {
+                overflow: hidden;
+                margin-top: 1em;
+            }
+            
+                div.post > .content > .text > .commentInfo  > .username {
+                    float: right;
+                    font-size: .7em;
+                    line-height: 1.5em;
+                    text-align: right;
+                    width: 50%;
+                }
+                
+                    div.post > .content > .text > .commentInfo  > .username > img {
+                        border-radius: 4px;
+                        float: right;
+                        height: 3em;
+                        margin: 0 0 0 1em;
+                        width: 3em;
+                    }
+
+        div.post > .content > .toolbar {
+            font-size: .8em;
+            margin: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+            div.post > .content > .toolbar > li {
+                border-bottom: 1px solid transparent;
+                cursor: pointer;
+                display: inline-block;
+                float: right;
+                margin: 0 0 0 1em;
+                padding: .5em 0 .2em 0;
+                transition: all .5s;
+            }
+            
+            div.post > .content > .toolbar > li:hover {
+                border-bottom-color: #aaa;
+            }
+            
+            div.post > .content > .toolbar > li.selected {
+                border-bottom-color: #888;
+            }
+            
+            /* "Submit" button */
+            div.post > .content > .toolbar > #submit {
+                border: 0;
+                float: left;
+                margin: 0 1em 0 0;
+                padding: .5em 1em .5em 0;
+            }
+            
+            div.post > .content > .toolbar > #submit:hover,
+            div.post > .content > .toolbar > #submit.selected {
+                background-color: #fff;
+            }
+            
+            div.post > .content > .toolbar img {
+                height: 1.5em;
+                margin: 0 .5em;
+                vertical-align: middle;
+            }
+            
+        div.post > .content > .newComment {
+            background-color: #fff;
+            display: none;
+            padding: 1em;
+            
+            -webkit-box-shadow: 0px 6px 5px -5px rgba(200, 200, 200, 1);
+            -moz-box-shadow:    0px 6px 5px -5px rgba(200, 200, 200, 1);
+            box-shadow:         0px 6px 5px -5px rgba(200, 200, 200, 1);
+        }
+        
+            div.post > .content > .newComment > .menu {
+                margin: 1em 0 0 0;
+            }
+            
+                div.post > .content > .newComment > .menu > * {
+                    margin: 0 1em 0 0;
+                }
+            
+            div.post > .content > .newComment #loading {
+                display: none;
+            }
+            
+            div.post > .content > .newComment > .signin {
+                background-color: #fff;
+                padding: 1em;
+            }
+            
+        /* Format the list of comments for a post */
+
+        div.post > .content > .comments {
+            margin: 2em 0 0 0;
+        }
+
+            div.post > .content > .comments > .comment {
+                margin: 0 0 .2em 0;
+                overflow: hidden;
+            }
+            
+                div.post > .content > .comments > .comment > .userPicture {
+                    float: left;
+                }
+                
+                    div.post > .content > .comments > .comment > .userPicture > img {
+                        width: 40px;
+                        height: 40px;
+                        margin: 2px;
+                        border-radius: 4px;
+                        
+                        -webkit-box-shadow: 0px 0px 2px 0px rgba(100, 100, 100, 1);
+                        -moz-box-shadow:    0px 0px 2px 0px rgba(100, 100, 100, 1);
+                        box-shadow:         0px 0px 2px 0px rgba(100, 100, 100, 1);
+                    }
+                
+                div.post > .content > .comments > .comment > .content {
+                    margin: 0 0 0 60px;
+                }
+                
+                    div.post > .content > .comments > .comment > .content > .userName {
+                        display: inline-block;
+                        font-size: .7em;
+                        font-weight: bold;
+                        margin: 0 0 1em 0;
+                        color: #666;
+                    }
+                    
+                    div.post > .content > .comments > .comment > .content > .op {
+                        background-color: rgb(255, 175, 50);
+                        border-radius: 4px;
+                        color: #fff;
+                        font-weight: bold;
+                        padding: .1em .5em;
+                    }
+                    
+                    div.post > .content > .comments > .comment > .content > .menu {
+                        font-size: .8em;
+                        margin: 1em 0 0 0;
+                        opacity: .4;
+                        text-align: right;
+                        transition: all .5s;
+                    }
+                    
+                    div.post > .content > .comments > .comment:hover > .content > .menu {
+                        opacity: 1;
+                    }
+
+                        div.post > .content > .comments > .comment > .content > .menu > .upvote,
+                        div.post > .content > .comments > .comment > .content > .menu > .downvote {
+                            cursor: pointer;
+                            height: 1em;
+                            vertical-align: middle;
+                            width: 1em;
+                        }
+                        
+                        div.post > .content > .comments > .comment > .content > .menu > .upvote.selected,
+                        div.post > .content > .comments > .comment > .content > .menu > .downvote.selected {
+                            background-color: #fff;
+                            border-radius: 999em;
+                            height: 1.2em;
+                            padding: 2px;
+                            width: 1.2em;
+                        }
+                        
+                        div.post > .content > .comments > .comment > .content > .menu > .upvote.selected {
+                            border: 1px solid #00E313;
+                        }
+                        
+                        div.post > .content > .comments > .comment > .content > .menu > .downvote.selected {
+                            border: 1px solid #FF0000;
+                        }
+                        
+                        div.post > .content > .comments > .comment > .content > .menu > .points {
+                            margin: 0 1em;
+                        }
+                        
+                        div.post > .content > .comments > .comment > .content > .menu > ul {
+                            display: inline-block;
+                            overflow: hidden;
+                        }
+                        
+                            div.post > .content > .comments > .comment > .content > .menu > ul > li {
+                                cursor: pointer;
+                                float: left;
+                                margin: 0 1em;
+                            }
+                    
+                            div.post > .content > .comments > .comment > .content > .menu > ul > li.hidden {
+                                display: none;
+                            }
+                            
+                    div.post > .content > .comments > .comment > .content > .replyTextarea {
+                        margin: .5em 0 0 0;
+                    }
+                            
+                            
+                            
+                            
+                            
+                            

@@ -1,0 +1,16 @@
+freepost_post:
+    path:     /community/{communityName}/post/{postHashId}/{postTitle}
+    defaults: { _controller: AppBundle:Post:post, postTitle: "" }
+
+freepost_post_comment:
+    path:     /community/{communityName}/post/{postHashId}/{postTitle}/comment/{commentHashId}
+    defaults: { _controller: AppBundle:Post:post }
+
+freepost_post_upvote:
+    path:     /upvotePost/{postHashId}
+    defaults: { _controller: AppBundle:Post:upvote }
+
+freepost_post_downvote:
+    path:     /downvotePost/{postHashId}
+    defaults: { _controller: AppBundle:Post:downvote }
+
