@@ -1,3 +1,23 @@
+/* freepost
+ * http://freepo.st
+ *
+ * Copyright © 2014-2015 zPlus
+ * 
+ * This file is part of freepost.
+ * freepost is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * freepost is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with freepost. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 div.user {
     background-color: #f5f8fa;
     min-height: 100%;
@@ -28,34 +48,33 @@ div.user {
                 width: 25%;
             }
                 
-                div.user > .content > .communities > .communities > .search {
-                    margin: 0 0 1em 0;
+                div.user > .content > .communities > .communities > .title {
+                    border-bottom: 1px solid #D8DEE3;
+                    font-size: .8em;
+                    font-weight: bold;
+                    margin: 1em 0;
+                    padding: .5em 0;
                 }
-                    
-                    div.user > .content > .communities > .communities > .search > .results {
-                        margin: 1em 0 0 0;
-                    }
                 
-                    div.user > .content > .communities > .communities > .search > input[name=filter] {
-                        background: #fff url("../../bundles/app/images/magnifier.png") no-repeat center left;
-                        padding: .5em 1em .5em 35px;
-                    }
-                
+                div.user > .content > .communities > .communities .allCommunities,
                 div.user > .content > .communities > .communities .community {
                     color: #888;
                     cursor: pointer;
                     padding: .5em;
                     transition: all .5s;
+                    word-wrap: break-word;
                 }
                 
                 div.user > .content > .communities > .communities .selected,
+                div.user > .content > .communities > .communities .allCommunities:hover,
                 div.user > .content > .communities > .communities .community:hover {
                     color: #000;
                     background-color: #fff;
                     border-right: 2px solid #e1e8ed;
                 }
                 
-                    div.user > .content > .communities > .communities .community > img {
+                    div.user > .content > .communities > .communities .community > img,
+                    div.user > .content > .communities > .communities .allCommunities > img {
                         border-radius: 4px;
                         height: 1.5em;
                         margin: 0 .5em 0 0;
@@ -96,7 +115,30 @@ div.user {
                             line-height: 2em;
                             margin: 0 1em 0 0;
                         }
-        
+                
+                /* List communities here. Loaded when clicked "All communities" button */
+                div.user > .content > .communities > .list > .searchCommunities {
+                }
+                    
+                    div.user > .content > .communities > .list > .searchCommunities > .community {
+                        border-radius: 5px;
+                        display: block;
+                        padding: .5em;
+                        transition: all .5s;
+                    }
+                    
+                    div.user > .content > .communities > .list > .searchCommunities > .community:hover {
+                        background-color: #fff;
+                    }
+                    
+                        div.user > .content > .communities > .list > .searchCommunities > .community > img {
+                            border-radius: 4px;
+                            height: 2em;
+                            margin: 0 1em 0 0;
+                            width: 2em;
+                            vertical-align: middle;
+                        }
+                
         /* Page: comments */
         
         div.user > .content > .comments {

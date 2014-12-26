@@ -1,3 +1,23 @@
+/* freepost
+ * http://freepo.st
+ *
+ * Copyright © 2014-2015 zPlus
+ * 
+ * This file is part of freepost.
+ * freepost is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * freepost is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with freepost. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 div.post {
     background-color: #f5f8fa;
     min-height: 100%;
@@ -25,6 +45,7 @@ div.post {
             border: 1px solid #e1e8ed;
             margin: 1em 0;
             padding: 1em;
+            word-wrap: break-word;
         }
         
             div.post > .content > .text > .commentInfo {
@@ -128,6 +149,7 @@ div.post {
             div.post > .content > .comments > .comment {
                 margin: 0 0 .2em 0;
                 overflow: hidden;
+                word-wrap: break-word;
             }
             
                 div.post > .content > .comments > .comment > .userPicture {
