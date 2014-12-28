@@ -1,7 +1,7 @@
 # freepost
 # http://freepo.st
 #
-# Copyright © 2014-2015 zPlus
+# Copyright Â© 2014-2015 zPlus
 # 
 # This file is part of freepost.
 # freepost is free software: you can redistribute it and/or modify
@@ -20,6 +20,11 @@
 freepost_community:
     path:     /community/{communityName}
     defaults: { _controller: AppBundle:Community:hotPosts }
+
+freepost_community_create:
+    path:     /createCommunity
+    defaults: { _controller: AppBundle:Community:create }
+    methods: [POST]
 
 # Sort posts by "New" (instead of "Hot")
 freepost_community_new:

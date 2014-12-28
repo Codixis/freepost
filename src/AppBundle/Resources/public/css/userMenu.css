@@ -72,6 +72,7 @@
     }
     
         .userMenu > .menu > a {
+            border-left: 4px solid transparent;
             color: #888;
             cursor: pointer;
             display: block;
@@ -79,14 +80,35 @@
             transition: all .5s;
         }
         
-        .userMenu > .menu > a:hover {
+        .userMenu > .menu > a:hover,
+        .userMenu > .menu > a.selected {
             color: #000;
         }
 
-        .userMenu > .menu > a:last-child {
-            background-color: #f5f8fa;
-            border-top: 1px solid #e1e8ed;
-        }
+            .userMenu > .menu > a.signout {
+                background-color: #f5f8fa;
+                border-top: 1px solid #e1e8ed;
+            }
+            
+            .userMenu > .menu > a.communities:hover,
+            .userMenu > .menu > a.communities.selected {
+                border-left-color: rgb(255, 175, 50);
+            }
+            
+            .userMenu > .menu > a.my:hover,
+            .userMenu > .menu > a.my.selected {
+                border-left-color: #76F054;
+            }
+            
+            .userMenu > .menu > a.preferences:hover,
+            .userMenu > .menu > a.preferences.selected {
+                border-left-color: #4d90f0; /* #A3DAFF */
+            }
+            
+            .userMenu > .menu > a.signout:hover,
+            .userMenu > .menu > a.signout.selected {
+                border-left-color: #f00;
+            }
         
         
         

@@ -30,7 +30,7 @@ div.user {
         height: 100%;
         width: 30%;
     }
-    
+        
     div.user > .content {
         height: 100%;
         margin: 0 35% 0 0;
@@ -119,6 +119,22 @@ div.user {
                 /* List communities here. Loaded when clicked "All communities" button */
                 div.user > .content > .communities > .list > .searchCommunities {
                 }
+                    
+                    div.user > .content > .communities > .list > .searchCommunities > .title {
+                        border-bottom: 1px solid #D8DEE3;
+                        font-size: .8em;
+                        font-weight: bold;
+                        margin: 1em 0;
+                        padding: .5em 0;
+                    }
+                    
+                    div.user > .content > .communities > .list > .searchCommunities > .title:first-child {
+                        margin-top: 0;
+                    }
+                    
+                    div.user > .content > .communities > .list > .searchCommunities > .new {
+                        margin: 0 0 2em 0;
+                    }
                     
                     div.user > .content > .communities > .list > .searchCommunities > .community {
                         border-radius: 5px;

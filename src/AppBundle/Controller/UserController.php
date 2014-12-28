@@ -97,7 +97,7 @@ class UserController extends Controller
         return $this->redirect($this->generateUrl('freepost_user', array('userName' => $newUser->getUsername())));
     }
     
-    // Load default community page
+    // Load default "Communities" page
     public function communitiesAction($userName)
     {
         $user = $this->getUser();
@@ -111,6 +111,7 @@ class UserController extends Controller
         return $this->render(
             'AppBundle:Default:User/Page/communities.html.twig',
             array(
+                'page'  => 'COMMUNITIES',
                 'user'  => $user
             )
         );
@@ -132,6 +133,7 @@ class UserController extends Controller
         return $this->render(
             'AppBundle:Default:User/Page/myposts.html.twig',
             array(
+                'page'  => 'MYPOSTS',
                 'posts' => $myPosts,
                 'user'  => $user
             )
@@ -180,7 +182,7 @@ class UserController extends Controller
         $commentRepo->setRepliesAsRead($user);
         
         return $this->render(
-            'AppBundle:Default:User/Page/replies.html.twig',
+            'AppBundle:Default:User/Page/myreplies.html.twig',
             array(
                 'comments'  => $comments,
                 'page'      => 'REPLIES',
@@ -219,7 +221,10 @@ class UserController extends Controller
         
         return $this->render(
             'AppBundle:Default:User/Page/preferences.html.twig',
-            array('user' => $user)
+            array(
+                'page' => 'PREFERENCES',
+                'user' => $user
+            )
         );
     }
     

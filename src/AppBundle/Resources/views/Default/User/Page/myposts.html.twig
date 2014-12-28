@@ -18,23 +18,9 @@
  # along with freepost. If not, see <http://www.gnu.org/licenses/>.
  #}
 
-{% extends 'AppBundle:Default:User/template.html.twig' %}
+{% extends 'AppBundle:Default:User/Page/my.html.twig' %}
 
-{% block title %}
-    My posts: {{ user.username }}
-{% endblock %}
-
-{% block javascript %}
-    {{ parent() }}
-    
-    {% javascripts
-        '@AppBundle/Resources/public/js/User/myposts.js'
-    %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
-
-{% block content %}
+{% block list %}
     
     <div class="myposts">
         {% include 'AppBundle:Default:Etc/MyPostsList/list.html.twig' %}

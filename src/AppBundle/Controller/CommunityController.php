@@ -92,6 +92,25 @@ class CommunityController extends Controller
         ));
     }
     
+    // Create a new community
+    public function createAction()
+    {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+
+        // Retrieve POST data
+        $communityName = $request->request->get('communityName');
+        
+        /* Redirect to the default community page.
+         * If the community doesn't exist, it's automatically created in
+         * 'AppBundle:Community:posts'. This is the default behaviour as
+         * if user visited the URL freepo.st/community/[communityName]
+         */
+        return $this->redirect($this->generateUrl('freepost_community', array(
+            'communityName' => $communityName
+        )));
+    }
+    
     // Load community about page
     public function aboutAction($communityName)
     {

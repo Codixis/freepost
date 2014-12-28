@@ -31,11 +31,9 @@
             
             {# Info about this comment #}
             <div class="commentInfo">
-                <div class="community">
-                    <img class="picture" alt="" title="" src="{{ url('freepost_community_picture', {'communityHashId': aComment.post.community.hashId}) }}" />
-                    <a class="none" target="_self" href="{{ path('freepost_community', {'communityName': aComment.post.community.name}) }}">
-                        {{ aComment.post.community.name }}
-                    </a>
+                <div class="username">
+                    <img class="picture" alt="" title="" src="{{ url('freepost_user_picture', {'userHashId': aComment.user.hashId}) }}" />
+                    {{ aComment.user.username }}
                     <br />
                     {# http://php.net/manual/en/function.date.php #}
                     {{ aComment.created|date("H:i M, jS") }}
