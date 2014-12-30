@@ -39,8 +39,9 @@ class PostController extends Controller
         $em          = $this->getDoctrine()->getManager();
         $commentRepo = $em->getRepository('AppBundle:Comment');
         
+        $user        = $this->getUser();
         $post        = $em->getRepository('AppBundle:Post')->findOneByHashId($postHashId);
-        $commentsSet = $commentRepo->findHot($post);
+        $commentsSet = $commentRepo->findHot($post, $user);
         $rootComment = NULL;
         
         // Build a reference parent->children
@@ -51,6 +52,7 @@ class PostController extends Controller
         
         foreach ($commentsSet as &$aComment)
         {
+            // Change the root, don't show all comments
             if ($aComment->getHashId() === $commentHashId)
                 $rootComment = $aComment;
             

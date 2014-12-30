@@ -27,6 +27,7 @@ AppBundle\Entity\Comment:
             id: true
             generator:
                 strategy: AUTO
+
     fields:
         hashId:
             type: string
@@ -45,7 +46,7 @@ AppBundle\Entity\Comment:
 
     uniqueConstraints:
         hashId:
-          columns: hashId
+            columns: hashId
 
     indexes:
         created:

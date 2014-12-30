@@ -1,7 +1,7 @@
 /* freepost
  * http://freepo.st
  *
- * Copyright © 2014-2015 zPlus
+ * Copyright Â© 2014-2015 zPlus
  * 
  * This file is part of freepost.
  * freepost is free software: you can redistribute it and/or modify
@@ -270,4 +270,7 @@ div.user {
                 display: none;
             }
             
-            
+            div.user > .content > .preferences > .section #deletePictureFile {
+                display: block;
+                margin: .5em 0 0 0;
+            }

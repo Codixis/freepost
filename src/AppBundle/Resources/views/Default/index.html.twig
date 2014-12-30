@@ -65,7 +65,17 @@
 <body>
 
 	{% block body %}{% endblock %}
-
+    
+    <div class="footer">
+        <div class="logo">
+            <a class="none" target="_self" href="{{ url('freepost_homepage') }}">
+                {% image '@AppBundle/Resources/public/images/logo.png' %}
+                    <img src="{{ asset_url }}" alt="" />
+                {% endimage %}
+            </a>
+        </div>
+    </div>
+    
 	{# Piwik statistics # }
 	<script type="text/javascript">
 		var _paq = _paq || [];

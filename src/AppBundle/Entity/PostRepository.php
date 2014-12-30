@@ -46,10 +46,10 @@ class PostRepository extends EntityRepository
         {
             case 'NEW':
                 $query = $em->createQuery(
-                    'SELECT p
+                    'SELECT p, u, v
                     FROM AppBundle:Post p
                     JOIN p.user u
-                    LEFT JOIN p.votes v WITH v.post = p AND v.user = :user
+                    LEFT JOIN p.votes v WITH v.user = :user
                     WHERE p.community = :community
                     ORDER BY p.created DESC'
                 )
@@ -59,10 +59,10 @@ class PostRepository extends EntityRepository
             
             default: // HOT
                 $query = $em->createQuery(
-                    'SELECT p, v
+                    'SELECT p, u, v
                     FROM AppBundle:Post p
                     JOIN p.user u
-                    LEFT JOIN p.votes v WITH v.post = p AND v.user = :user
+                    LEFT JOIN p.votes v WITH v.user = :user
                     WHERE p.community = :community
                     ORDER BY p.dateCreated DESC, p.vote DESC, p.created DESC'
                 )

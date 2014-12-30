@@ -57,7 +57,7 @@
             {% endimage %}
         </div>
         
-        <a class="none comments" target="_blank" href="{{ path('freepost_post', {'communityName': community.name, 'postHashId': aPost.hashId, 'postTitle': aPost.title}) }}">
+        <a class="none comments" target="_self" href="{{ path('freepost_post', {'communityName': community.name, 'postHashId': aPost.hashId, 'postTitle': aPost.title}) }}">
             {{ aPost.commentsCount > 0 ? aPost.commentsCount }}
             COMMENTS
         </a>

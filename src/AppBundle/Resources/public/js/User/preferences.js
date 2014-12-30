@@ -21,10 +21,11 @@
 (function() {
 
     var userImage;              // The picture in the side bar
-    var pictureFile;            // <input type=file> to select community picture 
-    var pictureFileLoading;     // Loading GIF to display while uploading community picture
+    var pictureFile;            // <input type=file> to select user picture
+    var pictureDelete;          // <input type=button> to delete user picture
+    var pictureFileLoading;     // Loading GIF to display while uploading user picture
     var pictureForm;            // <form> containing pictureFile
-    var displayName;            // <input type=text> with the community name
+    var displayName;            // <input type=text> with the user name
     
     /* This is used to receive a response from iframenull when a user changes
      * user picture, so that I know when it finished uploading.
@@ -63,19 +64,36 @@
         
         userImage           = $(".userMenu > .picture > .image");
         pictureFile         = $("#pictureFile");
+        pictureDelete       = $("#deletePictureFile");
         pictureFileLoading  = $("#pictureFileLoading");
         pictureForm         = $("#pictureForm");
         displayName         = $("#displayName");
         
+        // Submit new picture
         pictureForm.on("submit", function() {
             pictureForm.hide();
             pictureFileLoading.show();
         });
         
+        
+        // User selected a new picture
         pictureFile.on("change", function() {
             pictureForm.submit();
         });
         
+        // "Delete picture" button clicked
+        pictureDelete.click(function(event) {
+            if (!confirm("Do you want to delete your picture?"))
+            {
+                event.preventDefault();
+                return;
+            }
+            
+            // Clear input field. Submit again with an empty input to delete the picture.
+            pictureForm.trigger("reset").submit();
+        });
+        
+        // Update user display name
         displayName.on("change", function() {
             
             // URL used to POST the new name
@@ -104,3 +122,6 @@
     });
     
 })();
+
+
+

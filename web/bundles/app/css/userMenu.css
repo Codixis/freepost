@@ -1,7 +1,7 @@
 /* freepost
  * http://freepo.st
  *
- * Copyright © 2014-2015 zPlus
+ * Copyright Â© 2014-2015 zPlus
  * 
  * This file is part of freepost.
  * freepost is free software: you can redistribute it and/or modify
@@ -61,11 +61,16 @@
                 display: none;
                 font-weight: bold;
                 padding: .5em;
+                transition: all .5s;
                 width: 100%;
                 
                 -webkit-box-shadow: 0px 0px 5px 0px rgba(255, 255, 58, 1);
                 -moz-box-shadow:    0px 0px 5px 0px rgba(255, 255, 58, 1);
                 box-shadow:         0px 0px 5px 0px rgba(255, 255, 58, 1);
+            }
+            
+            .userMenu > .picture > .content > .newReplies:hover {
+                background-color: rgba(255, 175, 50);
             }
     
     .userMenu > .menu {

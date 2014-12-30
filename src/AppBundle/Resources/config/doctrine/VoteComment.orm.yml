@@ -22,9 +22,9 @@ AppBundle\Entity\VoteComment:
     table: `vote_comment`
     repositoryClass: AppBundle\Entity\VoteCommentRepository
     id:
-        user:
-          associationKey: true
         comment:
+          associationKey: true
+        user:
           associationKey: true
 
     fields:

@@ -405,8 +405,10 @@ class UserController extends Controller
         // Retrieve POST data
         $userPicture = $request->files->get('pictureFile');
 
-        // Save the new picture
-        if (!is_null($userPicture))
+        // Save the new picture, or reset to default if none is specified
+        if (is_null($userPicture))
+            $asset->deleteUserPicture($user);
+        else
             $asset->updateUserPicture($user, $userPicture);
 
         return $this->render(

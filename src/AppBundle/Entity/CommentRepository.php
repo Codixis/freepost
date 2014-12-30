@@ -32,8 +32,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
-    // Retrieve a list of newest comments sorted by vote
-    public function findHot($post = NULL)
+    /* Retrieve a list of hottest comments sorted by vote
+     * $user is used to find $user vote for each post
+     */
+    public function findHot($post = NULL, $user = NULL)
     {
         if (is_null($post))
             return NULL;
@@ -41,14 +43,16 @@ class CommentRepository extends EntityRepository
         $em = $this->getEntityManager();
 
         return $em->createQuery(
-            'SELECT c
+            'SELECT c, u, v
             FROM AppBundle:Comment c
             JOIN c.user u
-            JOIN c.post p
-            WHERE c.post = :postId
+            LEFT JOIN c.votes v WITH v.user = :user
+            WHERE c.post = :post
             ORDER BY c.vote DESC, c.created DESC'
         )
-        ->setParameter('postId', $post->getId())
+        ->setParameter('user', $user)
+        ->setParameter('post', $post)
+        ->setMaxResults(1000)
         ->getResult();
     }
     

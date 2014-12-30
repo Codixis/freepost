@@ -52,14 +52,38 @@ class Asset
         } catch (Exception $e) {}
     }
 
+    // Return the name of $user picture
+    protected static function getUserPictureFilename($user)
+    {
+        return $user->getHashId() . '.png';
+    }
+    
+    // Return the full path to $user picture
+    protected static function getUserPictureFullPath($user)
+    {
+        return Asset::PATH_USER_PICTURE . Asset::getUserPictureFilename($user);
+    }
+    
+    // Return the name of $community picture
+    protected static function getCommunityPictureFilename($community)
+    {
+        return $community->getHashId() . '.png';
+    }
+    
+    // Return the full path to $community picture
+    protected static function getCommunityPictureFullPath($community)
+    {
+        return Asset::PATH_COMMUNITY_PICTURE . Asset::getCommunityPictureFilename($community);
+    }
+    
     /* $CommunityPicture is a instance of
      *   Symfony\Component\HttpFoundation\File\UploadedFile
      * which corresponds to a form <input type="file" />.
      */
     public function updateCommunityPicture($community, $communityPicture)
     {
-        $fileName = $community->getHashId() . '.png';
-        $fileFullPath = Asset::PATH_COMMUNITY_PICTURE . $fileName;
+        $fileName = Asset::getCommunityPictureFilename(community);
+        $fileFullPath = Asset::getCommunityPictureFullPath($community);
 
         $communityPicture->move(
             Asset::PATH_COMMUNITY_PICTURE,
@@ -74,7 +98,7 @@ class Asset
      */
     public function retrieveCommunityPicture($community)
     {
-        $filePath = Asset::PATH_COMMUNITY_PICTURE . $community->getHashId() . '.png';
+        $filePath = Asset::getCommunityPictureFullPath($community);
 
         return readfile(file_exists($filePath) ? $filePath : Asset::PATH_COMMUNITY_PICTURE_DEFAULT);
     }
@@ -85,8 +109,8 @@ class Asset
      */
     public function updateUserPicture($user, $userPicture)
     {
-        $fileName = $user->getHashId() . '.png';
-        $fileFullPath = Asset::PATH_USER_PICTURE . $fileName;
+        $fileName = Asset::getUserPictureFilename($user);
+        $fileFullPath = Asset::getUserPictureFullPath($user);
 
         $userPicture->move(
             Asset::PATH_USER_PICTURE,
@@ -95,13 +119,19 @@ class Asset
 
         Asset::createThumbnail($fileFullPath, Asset::USER_PICTURE_WIDTH, Asset::USER_PICTURE_HEIGHT);
     }
+    
+    // Delete a user picture
+    public function deleteUserPicture($user)
+    {
+        unlink(Asset::getUserPictureFullPath($user));
+    }
 
     /* Retrieve a user picture.
      * This method return the binary file.
      */
     public function retrieveUserPicture($user)
     {
-        $filePath = Asset::PATH_USER_PICTURE . $user->getHashId() . '.png';
+        $filePath = Asset::getUserPictureFullPath($user);
 
         return readfile(file_exists($filePath) ? $filePath : Asset::PATH_USER_PICTURE_DEFAULT);
     }
