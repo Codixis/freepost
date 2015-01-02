@@ -225,7 +225,7 @@ div.user {
                             font-size: .7em;
                             line-height: 1.5em;
                             text-align: right;
-                            width: 50%;
+                            width: 30%;
                         }
                         
                             div.user > .content > .comments > .list > .comment > .commentInfo  > .username > img,
@@ -238,7 +238,9 @@ div.user {
                             }
 
                         div.user > .content > .comments > .list > .comment > .commentInfo  > .post {
+                            
                             font-style: italic;
+                            max-width: 65%;
                         }
                         
         /*** Page: preferences ***/

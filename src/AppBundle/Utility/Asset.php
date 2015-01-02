@@ -55,25 +55,25 @@ class Asset
     // Return the name of $user picture
     protected static function getUserPictureFilename($user)
     {
-        return $user->getHashId() . '.png';
+        return is_null($user) ? NULL : $user->getHashId() . '.png';
     }
     
     // Return the full path to $user picture
     protected static function getUserPictureFullPath($user)
     {
-        return Asset::PATH_USER_PICTURE . Asset::getUserPictureFilename($user);
+        return is_null($user) ? NULL : Asset::PATH_USER_PICTURE . Asset::getUserPictureFilename($user);
     }
     
     // Return the name of $community picture
     protected static function getCommunityPictureFilename($community)
     {
-        return $community->getHashId() . '.png';
+        return is_null($community) ? NULL : $community->getHashId() . '.png';
     }
     
     // Return the full path to $community picture
     protected static function getCommunityPictureFullPath($community)
     {
-        return Asset::PATH_COMMUNITY_PICTURE . Asset::getCommunityPictureFilename($community);
+        return is_null($community) ? NULL : Asset::PATH_COMMUNITY_PICTURE . Asset::getCommunityPictureFilename($community);
     }
     
     /* $CommunityPicture is a instance of
@@ -82,7 +82,10 @@ class Asset
      */
     public function updateCommunityPicture($community, $communityPicture)
     {
-        $fileName = Asset::getCommunityPictureFilename(community);
+        if (is_null($community) || is_null($communityPicture))
+            return;
+        
+        $fileName = Asset::getCommunityPictureFilename($community);
         $fileFullPath = Asset::getCommunityPictureFullPath($community);
 
         $communityPicture->move(
@@ -98,6 +101,9 @@ class Asset
      */
     public function retrieveCommunityPicture($community)
     {
+        if (is_null($community))
+            return;
+        
         $filePath = Asset::getCommunityPictureFullPath($community);
 
         return readfile(file_exists($filePath) ? $filePath : Asset::PATH_COMMUNITY_PICTURE_DEFAULT);
@@ -109,6 +115,9 @@ class Asset
      */
     public function updateUserPicture($user, $userPicture)
     {
+        if (is_null($user) || is_null($userPicture))
+            return;
+        
         $fileName = Asset::getUserPictureFilename($user);
         $fileFullPath = Asset::getUserPictureFullPath($user);
 
@@ -131,6 +140,9 @@ class Asset
      */
     public function retrieveUserPicture($user)
     {
+        if (is_null($user))
+            return;
+        
         $filePath = Asset::getUserPictureFullPath($user);
 
         return readfile(file_exists($filePath) ? $filePath : Asset::PATH_USER_PICTURE_DEFAULT);

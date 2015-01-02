@@ -163,10 +163,10 @@
         });
         
         /* CKEDITOR is loaded before this script. So I need this code to create the
-         * new instance when posts are loaded through ajax (and CKEDITOR.on('instanceReady'
-         * is not re-initialized).
+         * new editor instance when posts are loaded through ajax (and
+         * CKEDITOR.on('instanceReady' is not triggered).
          */
-        (newPostEditor == null) && (newPostEditor = CKEDITOR.replace("newPostEditor"));
+        (newPostEditor == null) && ($("#newPostEditor").length) && (newPostEditor = CKEDITOR.replace("newPostEditor"));
         
         // Button to show/hide new post form
         toolbarButton.submit.click(function() {

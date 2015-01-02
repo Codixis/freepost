@@ -71,6 +71,7 @@ class UserController extends Controller
     {
         $user = $this->getUser();
         
+        // If user is signed in, don't create a new one! Must be signed out first!
         if (!is_null($user))
             return $this->redirect($this->generateUrl('freepost_user', array('userName' => $user->getUsername())));
         
@@ -80,6 +81,9 @@ class UserController extends Controller
         
         $username = $request->request->get('username');
         $password = $request->request->get('password');
+        
+        // A user name can NOT contain slashes!
+        $username = str_replace(array('\\', '/'), '-', $username);
         
         $usernameExists = $userRepo->usernameExists($username);
         

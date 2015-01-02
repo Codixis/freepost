@@ -49,10 +49,13 @@
                 <form action="{{ url('freepost_user_process_signup') }}" method="post" target="_self" enctype="application/x-www-form-urlencoded">
                     <div class="title">Choose a screen name</div>
                     <div class="">
-                        <input type="text" name="username" value="" />
+                        <input type="text" pattern="[^\\\/]++" name="username" value="" />
                     </div>
                     <div class="tip">
                         Five characters or more
+                    </div>
+                    <div class="tip">
+                        You cannot use these symbols as part of your name: \ /
                     </div>
                     <div class="validUsername">
                         This username is available!

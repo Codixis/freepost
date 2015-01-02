@@ -41,7 +41,7 @@
                     {{ aComment.created|date("H:i M, jS") }}
                 </div>
                 
-                <a class="none post" target="_blank" href="{{ path('freepost_post', {'communityName': aComment.post.community.name, 'postHashId': aComment.post.hashId, 'postTitle': aComment.post.title}) }}">
+                <a class="none post" target="_self" href="{{ path('freepost_post', {'communityName': aComment.post.community.name, 'postHashId': aComment.post.hashId, 'postTitle': aComment.post.title}) }}">
                     {{ aComment.post.title }}
                 </a>
             </div>

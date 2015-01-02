@@ -28,9 +28,9 @@
             <div class="username">
                 {{ user.username }}
             </div>
-            <a class="none newReplies" target="_self" href="{{ path('freepost_user_replies', {'userName': user.username}) }}">
-                You have $1 new replies
-            </a>
+            
+            {# Show the message "You have X new replies" here #}
+            <a class="none newReplies" target="_self" href="{{ path('freepost_user_replies', {'userName': user.username}) }}"></a>
         </div>
     </div>
     

@@ -46,9 +46,9 @@
 
 <div id="newPost" class="newPost">
     
+    <input type="hidden" name="communityHashId" value="{{ community.hashId }}" />
+    
     {% if app.user %}
-        <input type="hidden" name="communityHashId" value="{{ community.hashId }}" />
-        
         <div class="title">
             Title
         </div>

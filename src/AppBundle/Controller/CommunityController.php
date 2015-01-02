@@ -101,6 +101,9 @@ class CommunityController extends Controller
         // Retrieve POST data
         $communityName = $request->request->get('communityName');
         
+        // A community name can NOT contain slashes!
+        $communityName = str_replace(array('\\', '/'), '-', $communityName);
+        
         /* Redirect to the default community page.
          * If the community doesn't exist, it's automatically created in
          * 'AppBundle:Community:posts'. This is the default behaviour as
@@ -224,9 +227,9 @@ class CommunityController extends Controller
                 )))
             );
         
-        $request = $this->getRequest();
-        $asset = $this->get('freepost.asset');
-        $em = $this->getDoctrine()->getManager();
+        $request    = $this->getRequest();
+        $asset      = $this->get('freepost.asset');
+        $em         = $this->getDoctrine()->getManager();
 
         // Retrieve POST data
         $communityPicture = $request->files->get('pictureFile');
@@ -262,29 +265,36 @@ class CommunityController extends Controller
      */
     public function submitNewPostAction($communityHashId)
     {
+        $user = $this->getUser();
+        
+        // If user is not signed in, user can't submit anything...
+        if (is_null($user))
+            return new JsonResponse(array(
+                'done' => FALSE
+            ));
+
         $em = $this->getDoctrine();
         $request = $this->getRequest();
-
-        $user = $this->getUser();
-
+        
         // Data for the new post
         $post = (object) array(
             'community' => $em->getRepository('AppBundle:Community')->findOneByHashId($communityHashId),
-            
-            // Purify HTML content
             'title'     => $request->request->get('title'),
-            
-            // Purify HTML content
             'text'      => $request->request->get('text')
         );
 
-        // If user is not signed in, or POST data is not valid
-        if (is_null($user) || is_null($post->community) || is_null($post->title) || strlen($post->title) < 1)
+        // If POST data is not valid
+        if (is_null($post->community) || is_null($post->title) || strlen($post->title) < 1)
             return new JsonResponse(array(
                 'done' => FALSE
             ));
         
-        // Clear user input
+        // A post title can NOT contain slashes!
+        $post->title = str_replace(array('\\', '/'), '-', $post->title);
+        
+        /* Clear user input because these are posted as raw content in order
+         * to maintain the html formatting
+         */
         $post->title = $this->get('exercise_html_purifier.default')->purify(substr($post->title, 0, 255));
         $post->text = $this->get('exercise_html_purifier.default')->purify($post->text);
 
@@ -296,7 +306,7 @@ class CommunityController extends Controller
             $post->text
         );
         
-        // Send back the formatted code for the new post to display
+        // Send back the formatted code of the new post to be display
         $html = $this->renderView(
             'AppBundle:Default:Etc/PostsList/post.html.twig',
             array(
