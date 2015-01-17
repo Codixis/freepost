@@ -1,7 +1,7 @@
 freepost
 ========
 
-This is the code powering [freepost](http://freepo.st).
+This is the (old) code powering [freepost](http://freepo.st). We have moved to [Savannah](https://savannah.nongnu.org/projects/freepost/) and this code is no longer updated.
 
 License
 ========
