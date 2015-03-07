@@ -1,7 +1,7 @@
 freepost
 ========
 
-This is the (old) code powering [freepost](http://freepo.st). We have moved to [NotABug])(https://notabug.org/zPlus/freepost) and this code is no longer updated.
+This is the (old) code powering [freepost](http://freepo.st). We have moved to [NotABug](https://notabug.org/zPlus/freepost) and this code is no longer updated.
 
 License
 ========
